@@ -4,7 +4,8 @@ const router = Router();
 
 router.get('/', HomeControlller.home);
 
-router.get('/cadastro', HomeControlller.newConsulter);
+router.get('/cadastro', HomeControlller.indexAppointment);
+router.post('/cadastro', HomeControlller.newConsulter);
 
 
 export { router };
