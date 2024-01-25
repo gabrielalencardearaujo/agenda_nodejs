@@ -4,16 +4,16 @@ type fnExpress = (req: Request, res: Response, next?: NextFunction) => void;
 
 type HomeControllerProtocol<T> = {
   home: T;
-  login: T;
+  newConsulter: T;
 }
 
 const HomeControlller: HomeControllerProtocol<fnExpress> = {
-  async home(req, res) {
+  home(req, res) {
     res.send('Hello World!!!');
   },
 
-  async login(req,res) {
-    res.send('Hello World');
+  newConsulter(req,res) {
+    res.render('create');
   }
 }
 

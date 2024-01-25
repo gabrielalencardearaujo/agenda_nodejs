@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { router as routes } from './router';
 import { connectionDB } from '../database/connection';
-import Agenda from '../database/AgendaModel';
+// import Agenda from '../database/AgendaModel';
 config();
 
 const app = express();
@@ -20,17 +20,17 @@ connectionDB()
   .then(() => {
     console.log('Success Connection!');
 
-    Agenda.insert({
-      date: new Date(),
-      middlename: 'Alencar',
-      age: 27,
-      phoneNumber: 12345467898,
-      email: 'dev.alencar.gabriel@gmail.com',
-      name: 'Gabriel',
-    }).then(resp => {
-      console.log(resp);
-    }).catch(err => console.log(err))
-    
+    // Agenda.insert({
+    //   date: new Date(),
+    //   middlename: 'Alencar',
+    //   age: 27,
+    //   phoneNumber: 12345467898,
+    //   email: 'dev.alencar.gabriel@gmail.com',
+    //   name: 'Gabriel',
+    // }).then(resp => {
+    //   console.log(resp);
+    // }).catch(err => console.log(err))
+
   })
   .catch(err => console.log(err))
 
