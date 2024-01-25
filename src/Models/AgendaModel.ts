@@ -18,12 +18,13 @@ const Agenda: AgendaProtocol<BodyProtocol> = {
     return await AppointmentModel.create(body)
   },
 
-  async AllAppointments() {
-    return await AppointmentModel.find()
+  async AllAppointments(appoFinished) {
+    if (appoFinished) return await AppointmentModel.find({ 'finished': true })
+    else return await AppointmentModel.find({ 'finished': false });
   },
 
   async IdAppointments(_id) {
-    return await AppointmentModel.findOne({'_id': _id})
+    return await AppointmentModel.findOne({ '_id': _id })
 
   }
 }

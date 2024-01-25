@@ -11,6 +11,6 @@ type BodyProtocol = {
 
 type AgendaProtocol<T> = {
   insert: (body: T) => Promise<mongoose.Document>
-  AllAppointments: () => Promise<(Document<null, T>)[]>
+  AllAppointments: (appoFinished: boolean) => Promise<(Document<null, T>)[]>
   IdAppointments: (id: string) => Promise<Document<T> | null>
 }

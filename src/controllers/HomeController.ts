@@ -30,7 +30,7 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
 
   async consulterAppointment(req, res) {
     // const email = 'amanda.souza@gmail.com';
-    const response = await Agenda.AllAppointments();
+    const response = await Agenda.AllAppointments(false);
 
     console.log(response);
     res.send('deu certo?')

@@ -7,7 +7,7 @@ router.get('/', HomeControlller.home);
 router.get('/cadastro', HomeControlller.indexAppointment);
 router.post('/cadastro', HomeControlller.newAppointment);
 
-router.get('/consultar', HomeControlller.consulterAppointment);
+router.get('/getcalendar', HomeControlller.consulterAppointment);
 
 
 export { router };
