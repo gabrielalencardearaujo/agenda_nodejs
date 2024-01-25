@@ -16,6 +16,15 @@ const AppointmentModel = mongoose.model('Appointment', AppointmentSchema);
 const Agenda: AgendaProtocol<BodyProtocol> = {
   async insert(body: BodyProtocol) {
     return await AppointmentModel.create(body)
+  },
+
+  async AllAppointments() {
+    return await AppointmentModel.find()
+  },
+
+  async IdAppointments(_id) {
+    return await AppointmentModel.findOne({'_id': _id})
+
   }
 }
 

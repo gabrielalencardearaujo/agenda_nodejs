@@ -5,8 +5,9 @@ type fnExpress = (req: Request, res: Response, next?: NextFunction) => void;
 
 type HomeControllerProtocol<T> = {
   home: T;
-  newConsulter: T;
   indexAppointment: T;
+  newAppointment: T;
+  consulterAppointment: T;
 }
 
 const HomeControlller: HomeControllerProtocol<fnExpress> = {
@@ -18,14 +19,21 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
     res.render('create');
   },
 
-  newConsulter(req, res) {
+  async newAppointment(req, res) {
     const body = req.body;
-    
     res.json(body);
 
-    Agenda.insert(body).then(resp => {
-      console.log(resp)
-    });
+    const status = await Agenda.insert(body);
+
+    console.log(status);
+  },
+
+  async consulterAppointment(req, res) {
+    // const email = 'amanda.souza@gmail.com';
+    const response = await Agenda.AllAppointments();
+
+    console.log(response);
+    res.send('deu certo?')
   }
 }
 
