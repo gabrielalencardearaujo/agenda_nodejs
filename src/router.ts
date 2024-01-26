@@ -11,6 +11,7 @@ router.post('/cadastro', HomeControlller.newAppointment);
 router.get('/getcalendar', HomeControlller.consulterAppointment);
 
 router.get('/event/:id', HomeControlller.eventAppointment);
+router.get('/list', HomeControlller.allAppointments);
 
 router.post('/event', HomeControlller.finish);
 

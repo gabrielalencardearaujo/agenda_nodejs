@@ -11,6 +11,7 @@ type HomeControllerProtocol<T> = {
   consulterAppointment: T;
   eventAppointment: T;
   finish: T;
+  allAppointments: T;
 }
 
 const HomeControlller: HomeControllerProtocol<fnExpress> = {
@@ -40,17 +41,23 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
     const resultEvent = await Agenda.IdAppointments(req.params.id);
     const formatEventWithdateTime = AppointmentFactory.buildDate(resultEvent);
 
-    res.render('event', { event: formatEventWithdateTime } )
+    res.render('event', { event: formatEventWithdateTime })
   },
 
   async finish(req, res) {
     const result = await Agenda.finishAppointment(req.body.id);
-    if(result) {
-      res.redirect(200, '/event/'+req.body.id);
+    if (result) {
+      res.redirect(200, '/event/' + req.body.id);
     } else {
-      res.redirect(500, '/event/'+req.body.id);
+      res.redirect(500, '/event/' + req.body.id);
     }
-  }
+  },
+
+  async allAppointments(req, res) {
+    const result = await Agenda.AllAppointments(true);
+    console.log(result)
+    res.render('list', { result });
+  },
 }
 
 export default HomeControlller;
