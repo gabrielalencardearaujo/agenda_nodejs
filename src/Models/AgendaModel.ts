@@ -23,11 +23,9 @@ const Agenda: AgendaProtocol<BodyProtocol> = {
     if (appoFinished) return await AppointmentModel.find({ 'finished': true })
     else {
       const appointments = await AppointmentModel.find({ 'finished': false });
-
       const appo:returnBuildDate[] = [];
 
       appointments.forEach(a => {
-        console.log(a._id)
         appo.push(AppointmentFactory.buildDate(a));
       })
       return appo;

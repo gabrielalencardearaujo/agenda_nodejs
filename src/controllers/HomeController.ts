@@ -8,6 +8,7 @@ type HomeControllerProtocol<T> = {
   indexAppointment: T;
   newAppointment: T;
   consulterAppointment: T;
+  eventAppointment: T;
 }
 
 const HomeControlller: HomeControllerProtocol<fnExpress> = {
@@ -30,8 +31,11 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
 
   async consulterAppointment(req, res) {
     const response = await Agenda.AllAppointments(false);
-    console.log(response)
     res.json(response);
+  },
+
+  async eventAppointment(req, res) {
+    res.json({id: req.params.id})
   }
 }
 
