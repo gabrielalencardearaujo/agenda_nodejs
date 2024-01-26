@@ -1,16 +1,17 @@
 import { mongoose } from "../../database/connection";
 
-type BodyProtocol = {
+export type BodyProtocol = {
   date: Date;
-  middlename: string;
-  age: number;
-  phoneNumber: number;
-  email: string;
+  time: string;
+  cpf: string;
+  describe?: string | null | undefined;
   name?: string | null | undefined;
+  cpf?: string | null | undefined;
+  finished?: boolean | null | undefined;
 }
 
 type AgendaProtocol<T> = {
   insert: (body: T) => Promise<mongoose.Document>
-  AllAppointments: (appoFinished: boolean) => Promise<(Document<null, T>)[]>
+  AllAppointments: (appoFinished: boolean) => Promise<(Document<null, T>)[]> | AppoNotFinished[];
   IdAppointments: (id: string) => Promise<Document<T> | null>
 }
