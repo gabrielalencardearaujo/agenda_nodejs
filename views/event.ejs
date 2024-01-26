@@ -25,6 +25,12 @@
           Data/Hora:  <%= new Date(event.start).toLocaleTimeString('pt-BR', { hour12: false, hour: 'numeric', minute: 'numeric' }) %> - 
           <%= new Date(event.start).toLocaleDateString('pt-BR',{ day: '2-digit', month: '2-digit', year: 'numeric' }) %>
         </p>
+        <% if(!event.finished) {%>
+          <form action="/event" method="post">
+            <input type="hidden" name="id" id="id" value="<%= event.id %>">
+            <button type="submit">Finalizar</button>
+          </form>
+          <% } %>
       </div>
     </div>
   </section>

@@ -23,7 +23,7 @@ const Agenda: AgendaProtocol<BodyProtocol> = {
     if (appoFinished) return await AppointmentModel.find({ 'finished': true })
     else {
       const appointments = await AppointmentModel.find({ 'finished': false });
-      const appo:returnBuildDate[] = [];
+      const appo: returnBuildDate[] = [];
 
       appointments.forEach(a => {
         appo.push(AppointmentFactory.buildDate(a));
@@ -33,10 +33,20 @@ const Agenda: AgendaProtocol<BodyProtocol> = {
   },
 
   async IdAppointments(_id) {
-    try{
+    try {
       return await AppointmentModel.findOne({ '_id': _id })
     }
-    catch(err){console.log(err)}
+    catch (err) { console.log(err) }
+  },
+
+  async finishAppointment(id) {
+    try{
+      await AppointmentModel.findByIdAndUpdate(id, { finished: true })
+      return true;
+    } catch(err) {
+      console.log(err)
+      return false;
+    }
   }
 }
 

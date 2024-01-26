@@ -12,4 +12,6 @@ router.get('/getcalendar', HomeControlller.consulterAppointment);
 
 router.get('/event/:id', HomeControlller.eventAppointment);
 
+router.post('/event', HomeControlller.finish);
+
 export { router };

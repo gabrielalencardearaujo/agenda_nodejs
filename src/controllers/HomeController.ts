@@ -10,6 +10,7 @@ type HomeControllerProtocol<T> = {
   newAppointment: T;
   consulterAppointment: T;
   eventAppointment: T;
+  finish: T;
 }
 
 const HomeControlller: HomeControllerProtocol<fnExpress> = {
@@ -40,6 +41,15 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
     const formatEventWithdateTime = AppointmentFactory.buildDate(resultEvent);
 
     res.render('event', { event: formatEventWithdateTime } )
+  },
+
+  async finish(req, res) {
+    const result = await Agenda.finishAppointment(req.body.id);
+    if(result) {
+      res.redirect(200, '/event/'+req.body.id);
+    } else {
+      res.redirect(500, '/event/'+req.body.id);
+    }
   }
 }
 
