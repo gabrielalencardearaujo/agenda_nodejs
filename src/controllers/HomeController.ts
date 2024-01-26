@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import Agenda from "../Models/AgendaModel";
+import AppointmentFactory from "../factories/AppointmentFactory";
 
 type fnExpress = (req: Request, res: Response, next?: NextFunction) => void;
 
@@ -35,7 +36,10 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
   },
 
   async eventAppointment(req, res) {
-    res.json({id: req.params.id})
+    const resultEvent = await Agenda.IdAppointments(req.params.id);
+    const formatEventWithdateTime = AppointmentFactory.buildDate(resultEvent);
+
+    res.render('event', { event: formatEventWithdateTime } )
   }
 }
 

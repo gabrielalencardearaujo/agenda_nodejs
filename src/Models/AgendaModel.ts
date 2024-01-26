@@ -33,8 +33,10 @@ const Agenda: AgendaProtocol<BodyProtocol> = {
   },
 
   async IdAppointments(_id) {
-    return await AppointmentModel.findOne({ '_id': _id })
-
+    try{
+      return await AppointmentModel.findOne({ '_id': _id })
+    }
+    catch(err){console.log(err)}
   }
 }
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta</title>
+
+  <!-- Boostrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+  <section class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1>Consulta de <%= event.title.split('-')[0] %></h1>
+      </div>
+      <div class="card-body">
+        <p>
+          Observações: <%= event.title.split('-')[1] %>
+        </p>
+        <p>
+          Data/Hora:  <%= new Date(event.start).toLocaleTimeString('pt-BR', { hour12: false, hour: 'numeric', minute: 'numeric' }) %> - 
+          <%= new Date(event.start).toLocaleDateString('pt-BR',{ day: '2-digit', month: '2-digit', year: 'numeric' }) %>
+        </p>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
