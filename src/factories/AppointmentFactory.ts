@@ -16,8 +16,8 @@ class ApointmentFactory implements ApointmentFactoryProtocol<BodyProtocol> {
     const day = date.getDate() + 1;
     const [hour, minutes] = time.split(':')
 
-    const startDate = new Date(year, month, day, +hour - 3, +minutes, 0, 0);
-    const endDate = new Date(year, month, day, +hour - 2, +minutes, 0, 0);
+    const startDate = new Date(year, month, day, +hour, +minutes, 0, 0);
+    const endDate = new Date(year, month, day, +hour + 1, +minutes, 0, 0);
 
     const appo = {
       id: _id,

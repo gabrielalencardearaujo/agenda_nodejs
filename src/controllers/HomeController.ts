@@ -12,7 +12,7 @@ type HomeControllerProtocol<T> = {
 
 const HomeControlller: HomeControllerProtocol<fnExpress> = {
   home(req, res) {
-    res.send('Hello World!!!');
+    res.render('index');
   },
 
   indexAppointment(req, res) {
@@ -30,9 +30,8 @@ const HomeControlller: HomeControllerProtocol<fnExpress> = {
 
   async consulterAppointment(req, res) {
     const response = await Agenda.AllAppointments(false);
-
-    console.log(response);
-    res.send('deu certo?')
+    console.log(response)
+    res.json(response);
   }
 }
 
